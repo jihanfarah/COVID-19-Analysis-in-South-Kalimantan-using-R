@@ -4,13 +4,42 @@ This project is adapted from [DQLab project](https://academy.dqlab.id/main/packa
 
 ## Project
 ### Accessing API and Status Code
-- Make a query using R
 
-![image](https://user-images.githubusercontent.com/103634806/180124967-36be7244-a684-466a-92e6-5d5dbc9ebcd1.png)
-[:link:](https://github.com/jihanfarah/Analisis-COVID-19-Kalimantan-Selatan/blob/main/status_code.R)
-- Result
+```
+library(httr)
+set_config(config(ssl_verifypeer = 0L))
+resp_kalsel <- GET("https://data.covid19.go.id/public/api/prov_detail_KALIMANTAN_SELATAN.json")
+status_code(resp_kalsel)
+```
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180125423-23263f70-2bc3-412b-8fa5-c80e4c9435f1.png)
 
 It shows [200], which means that our request is accepted and the content is ready to extract.
+
+### Extract data
+
+```
+cov_kalsel_raw <- content(resp_kalsel, as="parsed", simplifyVector = TRUE)
+names(cov_kalsel_raw)
+```
+
+- Result
+
+![image](https://user-images.githubusercontent.com/103634806/180127554-21ad4828-b0ed-4b24-84d1-d1f7de3bbebf.png)
+
+### Check total case, death and recovery percentage
+```
+#Cek total kasus, persentase meninggal dan sembuh
+cov_kalsel_raw$kasus_total
+cov_kalsel_raw$meninggal_persen
+cov_kalsel_raw$sembuh_persen
+```
+
+- Result
+
+![image](https://user-images.githubusercontent.com/103634806/180128083-a60a5d37-be4c-40fc-aa0e-a7fa447ace48.png)
+
+We get the information that per July 19th, 2022, the total case is 84733 with death percentage is 2.99% and recovery percentage is 96.17%. 
+
 
