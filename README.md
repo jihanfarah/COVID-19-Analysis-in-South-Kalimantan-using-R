@@ -4,3 +4,13 @@ This project is adapted from [DQLab project](https://academy.dqlab.id/main/packa
 
 ## Project
 ### Accessing API and Status Code
+- Make a query using R
+
+![image](https://user-images.githubusercontent.com/103634806/180124967-36be7244-a684-466a-92e6-5d5dbc9ebcd1.png)
+[:link:](https://github.com/jihanfarah/Analisis-COVID-19-Kalimantan-Selatan/blob/main/status_code.R)
+- Result
+
+![image](https://user-images.githubusercontent.com/103634806/180125423-23263f70-2bc3-412b-8fa5-c80e4c9435f1.png)
+
+It shows [200], which means that our request is accepted and the content is ready to extract.
+
