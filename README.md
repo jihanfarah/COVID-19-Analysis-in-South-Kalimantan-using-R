@@ -126,5 +126,24 @@ ggplot(new_cov_kalsel, aes(tanggal,sembuh)) +
 
 ![image](https://user-images.githubusercontent.com/103634806/180133277-ebe036f4-7991-4b4f-9014-3a56dba08ac2.png)
 
-From the graphic above, it can be concluded that so far the highest total cases are around July 2021 to August 2021 with the highest total cases reaching more than 800 people. Furthermore, total cases decrease in September 2021 and increase in February 2022 to March 2022 with the highest total cases above 750 people.
+From the graphic above, it can be concluded that so far the highest total recovery are around July 2021 to August 2021 with the highest total recovery reaching more than 1125 people. 
+
+```
+#Grafik kasus meninggal#Grafik kasus meninggal
+ggplot(new_cov_kalsel, aes(tanggal, meninggal)) +
+  geom_col(fill = "darkslategray4") +
+  labs(
+    x = NULL,
+    y = "Total cases",
+    title = "Daily Death of COVID-19 in South Kalimantan",
+    caption = "Sumber data: covid.19.go.id"
+  ) +
+  theme(plot.title.position = "plot")
+```
+
+- Result
+
+![image](https://user-images.githubusercontent.com/103634806/180134537-c5fd67f9-6703-4e50-9249-c6a1163fc382.png)
+
+From the graphic above, it can be concluded that so far the highest total death are around July 2021 to August 2021 with the highest total death reaching more than 45 people. 
 
