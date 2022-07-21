@@ -4,9 +4,10 @@ resp_kalsel <- GET("https://data.covid19.go.id/public/api/prov_detail_KALIMANTAN
 status_code(resp_kalsel)
 
 cov_kalsel_raw <- content(resp_kalsel, as="parsed", simplifyVector = TRUE)
-
-#Cek total kasus, persentase meninggal dan sembuh
 names(cov_kalsel_raw)
+
+#Cek total kasus, persentase meninggal dan sembuh terbaru
+cov_kalsel_raw$last_date
 cov_kalsel_raw$kasus_total
 cov_kalsel_raw$meninggal_persen
 cov_kalsel_raw$sembuh_persen
@@ -44,9 +45,9 @@ ggplot(new_cov_kalsel, aes(tanggal, kasus_baru)) +
   geom_col(fill="salmon")+
   labs(
     x=NULL,
-    y="Jumlah Kasus",
-    title="Kasus Harian Positif COVID-19 di Kalimantan Selatan",
-    caption="Sumber data: covid.19.go.id"
+    y="Total cases",
+    title="Daily Cases of COVID-19 in South Kalimantan",
+    caption="Data source: covid.19.go.id"
   )+
   theme(plot.title.position="plot")
 
@@ -55,9 +56,9 @@ ggplot(new_cov_kalsel, aes(tanggal,sembuh)) +
   geom_col(fill = "olivedrab2") +
   labs(
     x = NULL,
-    y = "Jumlah kasus",
-    title = "Kasus Harian Sembuh Dari COVID-19 di Kalimantan Selatan",
-    caption = "Sumber data: covid.19.go.id"
+    y = "Total Cases",
+    title = "Daily Recovery of COVID-19 in South Kalimantan",
+    caption = "Data source: covid.19.go.id"
   ) +
   theme(plot.title.position = "plot")
 
@@ -66,9 +67,9 @@ ggplot(new_cov_kalsel, aes(tanggal, meninggal)) +
   geom_col(fill = "darkslategray4") +
   labs(
     x = NULL,
-    y = "Jumlah kasus",
-    title = "Kasus Harian Meninggal Akibat COVID-19 di Kalimantan Selatan",
-    caption = "Sumber data: covid.19.go.id"
+    y = "Total cases",
+    title = "Daily Death of COVID-19 in South Kalimantan",
+    caption = "Data source: covid.19.go.id"
   ) +
   theme(plot.title.position = "plot")
 
@@ -95,14 +96,14 @@ cov_kalsel_pekanan <-
 glimpse(cov_kalsel_pekanan)
 
 ggplot(cov_kalsel_pekanan[cov_kalsel_pekanan$tahun==2022,], aes(pekan_ke, jumlah, fill = lebih_baik)) + geom_col(show.legend = FALSE) + 
-  scale_x_continuous(breaks = 1:24, expand = c(0, 0)) +
+  scale_x_continuous(breaks = 1:29, expand = c(0, 0)) +
   scale_fill_manual(values = c("TRUE" = "seagreen3", "FALSE" = "salmon")) +
   labs(
     x = NULL,
-    y = "Jumlah kasus",
-    title = "Kasus Pekanan Positif COVID-19 di Kalimantan Selatan",
-    subtitle = "Kolom hijau menunjukan penambahan kasus baru lebih sedikit dibandingkan satu pekan sebelumnya",
-    caption = "Sumber data: covid.19.go.id"
+    y = "Total Cases",
+    title = "Weekly Cases of COVID-19 in South Kalimantan",
+    subtitle = "Green columns show the new case is increasing less than a week before",
+    caption = "Data source: covid.19.go.id"
   ) +
   theme(plot.title.position = "plot")
 
@@ -151,14 +152,14 @@ ggplot(cov_kalsel_akumulasi_pivot, aes(tanggal, jumlah, colour=(kategori))) +
       "meninggal"="darkslategray4",
       "sembuh"="olivedrab2"
     ),
-    labels=c("Aktif", "Meninggal", "Sembuh")
+    labels=c("Active", "Death", "Recover")
   )+
   labs(
     x=NULL,
-    y="Jumlah kasus akumulasi",
+    y="Cases accumulation",
     colour=NULL,
-    title="Dinamika Kasus COVID-19 di Kalimantan Selatan",
-    caption="Sumber data: covid.19.go.id"
+    title="Case Dynamics of COVID-19 in South Kalimantan",
+    caption="Data source: covid.19.go.id"
   )+
   theme(
     plot.title=element_text(hjust=0.5),
