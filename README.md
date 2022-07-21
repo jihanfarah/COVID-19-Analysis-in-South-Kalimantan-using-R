@@ -11,7 +11,7 @@ set_config(config(ssl_verifypeer = 0L))
 resp_kalsel <- GET("https://data.covid19.go.id/public/api/prov_detail_KALIMANTAN_SELATAN.json")
 status_code(resp_kalsel)
 ```
-- Result
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180125423-23263f70-2bc3-412b-8fa5-c80e4c9435f1.png)
 
@@ -24,7 +24,7 @@ cov_kalsel_raw <- content(resp_kalsel, as="parsed", simplifyVector = TRUE)
 names(cov_kalsel_raw)
 ```
 
-- Result
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180127554-21ad4828-b0ed-4b24-84d1-d1f7de3bbebf.png)
 
@@ -36,7 +36,7 @@ cov_kalsel_raw$meninggal_persen
 cov_kalsel_raw$sembuh_persen
 ```
 
-- Result
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180128083-a60a5d37-be4c-40fc-aa0e-a7fa447ace48.png)
 
@@ -50,7 +50,7 @@ str(cov_kalsel)
 head(cov_kalsel)
 ```
 
-- Result
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180129144-947e374e-6998-4ac0-867c-1b9cdd234aa8.png)
 
@@ -84,12 +84,12 @@ new_cov_kalsel <-
   )
 str(new_cov_kalsel)  
 ```
-- Result
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180130288-d044c125-76f3-4e01-956b-4b10a11144a2.png)
 
-### Make graphic
-
+### Make Graphic
+#### Daily Cases
 ```
 #Grafik kasus harian positif
 ggplot(new_cov_kalsel, aes(tanggal, kasus_baru)) +
@@ -103,11 +103,13 @@ ggplot(new_cov_kalsel, aes(tanggal, kasus_baru)) +
   theme(plot.title.position="plot")
 ```
 
-- Result
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180133107-9a272d2c-ca5f-4b35-956a-7cc1198d0367.png)
 
 From the graphic above, it can be concluded that so far the highest total cases are around July 2021 to August 2021 with the highest total cases reaching more than 800 people. Furthermore, total cases decrease in September 2021 and increase in February 2022 to March 2022 with the highest total cases above 750 people.
+
+#### Daily Recovery
 
 ```
 #Grafik kasus sembuh
@@ -122,11 +124,13 @@ ggplot(new_cov_kalsel, aes(tanggal,sembuh)) +
   theme(plot.title.position = "plot")
 ```
 
-- Result
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180133277-ebe036f4-7991-4b4f-9014-3a56dba08ac2.png)
 
 From the graphic above, it can be concluded that so far the highest total recovery are around July 2021 to August 2021 with the highest total recovery reaching more than 1125 people. 
+
+#### Daily Death
 
 ```
 #Grafik kasus meninggal#Grafik kasus meninggal
@@ -141,7 +145,7 @@ ggplot(new_cov_kalsel, aes(tanggal, meninggal)) +
   theme(plot.title.position = "plot")
 ```
 
-- Result
+#### Result
 
 ![image](https://user-images.githubusercontent.com/103634806/180134537-c5fd67f9-6703-4e50-9249-c6a1163fc382.png)
 
